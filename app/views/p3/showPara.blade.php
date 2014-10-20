@@ -4,23 +4,29 @@
 <head>
 </head>
 <body>
-@if(isset($paras))
-    @foreach($paras as $para)
-        <p>{{ $para }}</p>
-    @endforeach
-@endif
-@if(isset($users))
-    @foreach($users as $user)
-        <h4>{{ $user['username'] }}</h4>
-        <ul>
-            @if(array_key_exists('birthdate',$user))
-                <li>{{ $user['birthdate' ]}}</li>
+@if (isset($genresults))
+    @if (is_array($genresults))
+        @foreach($genresults as $returndata)
+            @if (is_array($returndata))
+                @if(array_key_exists('username', $returndata))
+                    <h4>{{ $returndata['username'] }}</h4>
+                    <ul>
+                        @if(array_key_exists('birthdate',$returndata))
+                            <li>{{ $returndata['birthdate' ]}}</li>
+                        @endif
+                        @if(array_key_exists('profile',$returndata))
+                            <li>{{ $returndata['profile'] }}</li>
+                        @endif
+                    </ul>
+                @endif
+            @else
+                <p>{{ $returndata }}</p>
             @endif
-            @if(array_key_exists('profile',$user))
-                <li>{{ $user['profile'] }}</li>
-            @endif
-        </ul>
-    @endforeach
+        @endforeach
+    @else
+        <p>{{ $genresults }}</p>
+    @endif
 @endif
+
 </body>
 </html>

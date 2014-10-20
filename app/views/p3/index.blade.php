@@ -7,7 +7,7 @@
 
 <!-- start: provide a header for the page -->
 @section('header')
-    <section id="header" class="heading" style="background: url(img/lorem-ipsum-banner.jpg);">
+    <section id="header" class="heading" style="background: url(/img/homer.jpg);">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
@@ -57,19 +57,25 @@
                         ))}}
     						<div class="form-body">
     							<h3 class="form-section">Sample Text Generator</h3>
-                                {{Form::label('numpara', 'Number of paragraphs',array('class'=>"h4 col-md-3"))}}
-                                <div class="form-group">
-                                    <div class="col-md-8 input-group">
+                                {{Form::label('numpara', 'Number of paragraphs',array('class'=>"h4 col-md-4"))}}
+                                <div class="form-group col-md-8 input-group">
                                         {{ Form::text('numpara',1, array(
                                             'id'=>'numpara',
                                             'class'=>'form-control input-lg',
                                             'min' => '1',
-                                            'max' => '100',
+                                            'max' => '99',
                                             'step'=> '1',
                                             'pattern'=>'[0-9.]+'
                                         ))}}
-                                    </div>
+								<span class="input-group-addon">
+                                    {{ Form::button('Generate', array(
+                                        'class'=>'btn btn-info btn-search',
+                                        'id' => 'genpara',
+                                        'type' => 'submit'
+                                    )) }}
+								</span>
                                 </div>
+
                             </div>
                         {{Form::close()}}
                         <!-- end: form and output of paragraphs generated -->
@@ -85,32 +91,38 @@
                         ))}}
     						<div class="form-body">
     							<h3 class="form-section">User Generator</h3>
-                                {{Form::label('numuser', 'Number of users',array('class'=>"h4 col-md-3"))}}
+                                {{ Form::label('numuser', 'Number of users',array('class'=>"h4 col-md-4"))}}
    							    <div class="form-group">
                                     <div class="col-md-8 input-group">
                                         {{ Form::text('numuser','1', array(
                                             'id' => 'numuser',
                                             'class' => 'form-control input-lg',
                                             'min' => '1',
-                                            'max' => '100',
+                                            'max' => '99',
                                             'step'=> '1',
                                             'pattern'=>'[0-9.]+'
                                          ))}}
+                                        <span class="input-group-addon">
+                                            {{ Form::button('Generate', array(
+                                                'class'=>'btn btn-info btn-search',
+                                                'id' => 'genuser'
+                                            )) }}
+                                        </span>
                                     </div>
-                                    <div class="col-md-3 control-label">
+                                    <div class="col-md-4 control-label">
                                         Add a birthdate
                                     </div>
-                                    <div class="col-md-8 input-group">
-                                        {{Form::checkbox('birthdate','big', true, array(
-                                            'id'=>'birthdate'
+                                    <div class="col-md-4 input-group">
+                                        {{ Form::checkbox('birth','on',true, array(
+                                            'id'=>'birthy'
                                         ))}}
                                     </div>
-                                    <div class="col-md-3 control-label">
+                                    <div class="col-md-4 control-label">
                                         Add a profile
                                     </div>
-                                    <div class="col-md-8 input-group">
-                                       {{Form::checkbox('profile','big', true, array(
-                                        'id'=>'profile'
+                                    <div class="col-md-4 input-group">
+                                       {{Form::checkbox('profile','profile', true, array(
+                                        'id'=>'profilecheck'
                                         )) }}
                                     </div>
                                 </div>
@@ -122,7 +134,7 @@
                         <!-- start: lorem ipsum information -->
                         <h3>Some information about Lorem Ipsum</h3>
 
-                        <img src="img/lorem-ipsum-banner.jpg" alt="lorem ipsum">
+                        <img src="/img/lorem-ipsum-banner.jpg" alt="lorem ipsum">
 
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
                         been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
@@ -141,7 +153,9 @@
             <div class="col-md-4 col-sm-4 sidebar">
                 <div class="widget-sidebar">
                     <h3>Result of Search</h3>
-                    <div id="usercontainer" style="border: dashed; border-color:#960000; background-color: lightgrey; padding: 15px">Generated results appear here.</div>
+                    <div id="usercontainer" style="border: dashed; border-color:#960000; background-color: lightgrey; padding: 15px">
+                        @yield('outputinfo')
+                    </div>
 
                 </div>
 
@@ -163,7 +177,7 @@
 <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
 
 <script>
-
+    var BASE = <?php URL::current(); ?>
 $(document).ready(function() {
 
 // Prevents the generators from triggering when users press the enter key
@@ -174,11 +188,8 @@ $(document).ready(function() {
     });
 
 // jquery codes to track changes in the number of paragraphs requested
-    $('#numpara').change(function(e) {
-         e.preventDefault();
-    });
 
-    $('#numpara').on('keyup change',function(e){
+    $('#numpara, #genpara').on('keyup change click',function(e){
         e.preventDefault();
 
         // send restful message only if form is validated
@@ -186,30 +197,28 @@ $(document).ready(function() {
             $.get('p3/list?numpara=' + $( "#numpara" ).val(), function(data){
                 $('#usercontainer').html(data);
             })
-        };
+        }
+        else $('#usercontainer').html("<img src='/img/404.png' class='col-md-12' /><br /><h4>O Bammer, your input is not valid...</h4>")
     });
 
-// jquery codes to track changes in the number of users requested
-    $('#numuser, #profile, #birthdate').keyup(function(e) {
-         e.preventDefault();
-    });
-    $('#numuser,#profile, #birthdate').on('keyup change',function(e){
+    $('#numuser,#profilecheck, #birthy, #usersubmit, #genuser').on('change keyup mouseup',function(e){
         e.preventDefault();
 
-        // creating the restful message using the form user input
+        // create restful message for ajax
         if($( "#usersearch" ) .valid()) {
             var restmsg = 'p3/list?numuser=' + $( "#numuser" ).val();
-            if($( "#birthdate" ).is(':checked'))
+            if($( "#birthy" ).is(':checked'))
                 restmsg = restmsg + '&birthdate=on';  // checked
 
-            if($( "#profile" ).is(':checked'))
+            if($( "#profilecheck" ).is(':checked'))
                 restmsg = restmsg + '&profile=on';  // checked
 
         // send restful message only if form is validated
             $.get(restmsg, function(data){
                 $('#usercontainer').html(data);
             })
-        };
+        }
+        else $('#usercontainer').html("<img src='/img/404.png' class='col-md-12' /><br /><h4>O Bammer, your input is not valid...</h4>")
     });
 });
 

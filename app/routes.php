@@ -1,12 +1,31 @@
 <?php
 
 // p3 assignment routes
-Route::get('/p3', function(){
-    return View::make('p3.index');
-});
 
-//p3 passing to p3Controller to generate
-Route::get('/p3/list/{query?}', 'p3Controller@showPara');
+Route::controller('p3', 'p3Controller');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

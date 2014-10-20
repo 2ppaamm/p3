@@ -79,12 +79,12 @@
 <!--script type="text/javascript" src="/plugins/select2/select2.min.js"></script>
 <script src="/scripts/app.js" type="text/javascript"></script>
 <script src="/scripts/login.js" type="text/javascript"></script>
-<script src="/js/allgifted.js" type="text/javascript"></script>
+<script src="/js/allgifted.js" type="text/javascript"></script-->
 <script>
     jQuery(document).ready(function() {
         App.init();
         Login.init();
     });
-</script-->
+</script>
 <!-- END JAVASCRIPTS -->
 

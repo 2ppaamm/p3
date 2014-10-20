@@ -9,7 +9,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html"><img src="img/favicon.ico"></i> <span>E-15</span>|Pamela Lim</a>
+          <a class="navbar-brand" href="index.html"><img src="/img/favicon.ico"></i> <span>E-15</span>|Pamela Lim</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->

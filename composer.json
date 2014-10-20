@@ -6,7 +6,8 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "4.2.*",
-        "artdarek/oauth-4-laravel": "dev-master"
+        "artdarek/oauth-4-laravel": "dev-master",
+        "zeroclipboard/zeroclipboard": "1.3.5"
  	},
 	"autoload": {
 		"classmap": [
