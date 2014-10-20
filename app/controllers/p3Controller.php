@@ -29,8 +29,8 @@ class p3Controller extends BaseController
         $query = Input::all();      //get input from form
         $genresults=null;
 
-        Pre::render($query);
         //start: perform a paragraph generator
+
         if (isset($query['numpara']) && $query['numpara'] > $MINREQ && $query['numpara'] < $MAXREQ) {
             $genresults = $faker->paragraphs($query['numpara']);
         }
@@ -47,17 +47,26 @@ class p3Controller extends BaseController
                 }
             }
         } else {
-            $genresults = 'Our generators can generate 1-99 output at one time.<br /> <a href="/p3">Try again</a>';
+            $genresults =
+                "<img src='/img/404.png' class='col-md-12' /><br />".         //generate an error output page if form is invalid
+                "<h4>Duh... wake me when you've figured your input...</h4>";
+
         }
         if (Request::ajax()) {
-
             // provide the ajax content
-            return View::make('p3.showPara', compact('genresults'));
+            return View::make('p3.showPara')
+                ->with(compact('genresults'))
+                ->with(compact('query')
+                );
+//            , query'));
         }
 
         // provide the full content
         else {
-            return View::make('p3.showPara', compact('genresults'));
+            return View::make('p3.list')
+                -> with (compact('genresults'))
+                ->with(compact('query')
+            );
         }  //if not ajax
     }
 }

@@ -47,7 +47,8 @@
                             <small>"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</small>
                         </blockquote>
 
-                        <!-- start: form and the output for the lorem ipsum generated -->
+
+ <!-- start: form for random text generator -->
                         {{Form::open(array(
                             'url' => 'p3/list',
                             'id'=>'loremsearch',
@@ -75,14 +76,21 @@
                                     )) }}
 								</span>
                                 </div>
-
+                                <div class="col-md-4 control-label">
+                                   Add paragraph tags
+                                </div>
+                                <div class="col-md-4 input-group">
+                                    {{ Form::checkbox('tags','on',true, array(
+                                       'id'=>'tags'
+                                    ))}}
+                                </div>
                             </div>
                         {{Form::close()}}
-                        <!-- end: form and output of paragraphs generated -->
+<!-- end: form for paragraph generator -->
 
                         <hr>
 
-                        <!-- start: form and the output for users -->
+<!-- start: form for users generator -->
                         {{Form::open(array(
                             'url' => 'p3/list',
                             'name'=>'usersearch',
@@ -128,10 +136,10 @@
                                 </div>
                             </div>
                         {{Form::close()}}
-                        <!-- end: form and output of users generated -->
+<!-- end: form for users generator -->
                 <hr>
 
-                        <!-- start: lorem ipsum information -->
+<!-- start: some information on Lorem ipsum -->
                         <h3>Some information about Lorem Ipsum</h3>
 
                         <img src="/img/lorem-ipsum-banner.jpg" alt="lorem ipsum">
@@ -147,9 +155,9 @@
                 <!-- begin:comments -->
                 <!-- end:post-comment -->
             </div>
-            <!-- end:article -->
+<!-- end: Lorem Ipsum information -->
 
-            <!-- begin:sidebar -->
+<!-- begin: sidebar for the output -->
             <div class="col-md-4 col-sm-4 sidebar">
                 <div class="widget-sidebar">
                     <h3>Result of Search</h3>
@@ -160,7 +168,7 @@
                 </div>
 
             </div>
-            <!-- end:sidebar -->
+<!-- end:sidebar -->
 
         </div>
       </div>
@@ -177,48 +185,53 @@
 <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
 
 <script>
-    var BASE = <?php URL::current(); ?>
+var BASE = '/p3';  //getting the base url
+
 $(document).ready(function() {
 
 // Prevents the generators from triggering when users press the enter key
-    $('input[type=text]').on('keydown', function(e) {
-        if (e.which == 13) {
-            e.preventDefault();
-        }
-    });
+//    $('input[type=text]').on('keydown', function(e) {
+//        if (e.which == 13) {
+//            e.preventDefault();
+//        }
+//    });
 
-// jquery codes to track changes in the number of paragraphs requested
-
-    $('#numpara, #genpara').on('keyup change click',function(e){
+    $('#numpara, #genpara, #tags').on('keyup change',function(e){
         e.preventDefault();
 
         // send restful message only if form is validated
         if($( "#loremsearch") .valid()) {
-            $.get('p3/list?numpara=' + $( "#numpara" ).val(), function(data){
+            var restmsg = BASE+'/list?numpara=' + $( "#numpara" ).val();
+            if($( "#tags" ).is(':checked'))
+                restmsg = restmsg + '&tags=on';  // tags checked
+            $.get(restmsg, function(data){
                 $('#usercontainer').html(data);
             })
         }
-        else $('#usercontainer').html("<img src='/img/404.png' class='col-md-12' /><br /><h4>O Bammer, your input is not valid...</h4>")
+        else $('#usercontainer').html("<img src='http://www.totalgifs.com/simpsons/homer_simpson-1080.gif' class='col-md-12' />" +
+                                        "<br /><h4>O Bammer, your input is not valid...</h4>")
     });
 
-    $('#numuser,#profilecheck, #birthy, #usersubmit, #genuser').on('change keyup mouseup',function(e){
+    $('#numuser,#profilecheck, #birthy, #usersubmit, #genuser').on('keyup change',function(e){
         e.preventDefault();
 
-        // create restful message for ajax
+// create restful message for ajax
         if($( "#usersearch" ) .valid()) {
-            var restmsg = 'p3/list?numuser=' + $( "#numuser" ).val();
+            var restmsg = BASE+'/list?numuser=' + $( "#numuser" ).val();
             if($( "#birthy" ).is(':checked'))
-                restmsg = restmsg + '&birthdate=on';  // checked
+                restmsg = restmsg + '&birthdate=on';  // birthdate checked
 
             if($( "#profilecheck" ).is(':checked'))
-                restmsg = restmsg + '&profile=on';  // checked
+                restmsg = restmsg + '&profile=on';  // profile checked
 
         // send restful message only if form is validated
             $.get(restmsg, function(data){
                 $('#usercontainer').html(data);
             })
         }
-        else $('#usercontainer').html("<img src='/img/404.png' class='col-md-12' /><br /><h4>O Bammer, your input is not valid...</h4>")
+        else $('#usercontainer').html(
+            "<img src='/img/404.png' class='col-md-12' /><br />" +         //generate an error output page if form is invalid
+            "<h4>O Bammer, your input is not valid...</h4>")
     });
 });
 
