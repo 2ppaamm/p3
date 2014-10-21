@@ -43,8 +43,8 @@
                             <span><em>In <a href="http://dwa15.com/" target="_blank">DWA Course</a></em></span>
                         </div>
                         <blockquote>
-                            <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit ~</p>
-                            <small>"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</small>
+                            <p>Anglicus ! Quis necesse esse ? Im 'non iens ad Angliam. ~</p>
+                            <small>"English! Who needs that? I'm never going to England ~ Homer Simpson"</small>
                         </blockquote>
 
 
@@ -75,7 +75,7 @@
                                         'type' => 'submit'
                                     )) }}
 								</span>
-                                </div>
+								</div>
                                 <div class="col-md-4 control-label">
                                    Add paragraph tags
                                 </div>
@@ -111,7 +111,7 @@
                                             'pattern'=>'[0-9.]+'
                                          ))}}
                                         <span class="input-group-addon">
-                                            {{ Form::button('Generate', array(
+                                            {{ Form::submit('Generate', array(
                                                 'class'=>'btn btn-info btn-search',
                                                 'id' => 'genuser'
                                             )) }}
@@ -142,12 +142,11 @@
 <!-- start: some information on Lorem ipsum -->
                         <h3>Some information about Lorem Ipsum</h3>
 
-                        <img src="/img/lorem-ipsum-banner.jpg" alt="lorem ipsum">
+                        <img src="http://i.imgur.com/DAheL.gif" alt="lorem ipsum">
 
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
                         been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                         <!-- end: lorem ipsum information -->
-
                     </div>
                 </div>
 
@@ -164,7 +163,6 @@
                     <div id="usercontainer" style="border: dashed; border-color:#960000; background-color: lightgrey; padding: 15px">
                         @yield('outputinfo')
                     </div>
-
                 </div>
 
             </div>
@@ -179,7 +177,7 @@
 <!-- start: Javascript/JQuery that is only applicable to this page -->
 
 @section('page_js')
-// start: handles ajax paragraph search
+<!-- start: handles ajax paragraph search -->
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
 <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
@@ -188,13 +186,6 @@
 var BASE = '/p3';  //getting the base url
 
 $(document).ready(function() {
-
-// Prevents the generators from triggering when users press the enter key
-//    $('input[type=text]').on('keydown', function(e) {
-//        if (e.which == 13) {
-//            e.preventDefault();
-//        }
-//    });
 
     $('#numpara, #genpara, #tags').on('keyup change',function(e){
         e.preventDefault();
@@ -209,10 +200,10 @@ $(document).ready(function() {
             })
         }
         else $('#usercontainer').html("<img src='http://www.totalgifs.com/simpsons/homer_simpson-1080.gif' class='col-md-12' />" +
-                                        "<br /><h4>O Bammer, your input is not valid...</h4>")
+                                        "<br /><h4>Spoiler... your input is not valid...</h4>");
     });
 
-    $('#numuser,#profilecheck, #birthy, #usersubmit, #genuser').on('keyup change',function(e){
+    $('#numuser,#profilecheck, #birthy').on('keyup change',function(e){
         e.preventDefault();
 
 // create restful message for ajax
@@ -230,8 +221,8 @@ $(document).ready(function() {
             })
         }
         else $('#usercontainer').html(
-            "<img src='/img/404.png' class='col-md-12' /><br />" +         //generate an error output page if form is invalid
-            "<h4>O Bammer, your input is not valid...</h4>")
+            "<img src='http://img4.wikia.nocookie.net/__cb20130920142351/simpsons/images/e/e9/Pic_1187696292_8.jpg' class='col-md-12' /><br />" +         //generate an error output page if form is invalid
+            "<h4>D'oh...If you want your users, get your input straight!</h4>")
     });
 });
 
@@ -239,3 +230,13 @@ $(document).ready(function() {
 
 @stop
 <!-- end: Page Javascript -->
+
+<!-- start: privacy related to page -->
+@section('page_privacy')
+    <div id="simpsons">
+        <h3>Simpsons</h3>
+        <p>"The Simpsons" TM and (C) (or copyright) Fox and its related companies. All rights reserved. Any reproduction, duplication, or distribution in any form is expressly prohibited.</p>
+        <p>This web site, its operators, and any content contained on this site relating to "The Simpsons" are not authorized by Fox.</p>
+    </div>
+@stop
+<!-- end: page privacy -->

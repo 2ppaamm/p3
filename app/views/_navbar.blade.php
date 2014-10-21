@@ -15,18 +15,16 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-top">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="http://p1.pamelalim.org">Portfolio</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="page.html">Page</a></li>
+            <li><a href="http://p1.pamelalim.org">Home - P1</a></li>
+            <li><a href="http://p2.pamelalim.org">xkcd Password - P2</a></li>
+            <li><a href="http://p3.pamelalim.org">Developer's Best Friend</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <b class="caret"></b></a>
+              <a href="http://p4.pamelalim.org" class="dropdown-toggle" data-toggle="dropdown">P4<b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="single.html">Single</a></li>
-                <li><a href="archive.html">Archives</a></li>
-                <li><a href="category.html">Category</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="portfolio-single.html">Portfolio Single</a></li>
+                <li><a href="p2">xkcd Password Generator</a></li>
+                <li><a href="p3">Developer's Best Friend</a></li>
+                <li><a href="#">App1</a></li>
+                <li><a href="#">App2</a></li>
               </ul>
             </li>
           </ul>

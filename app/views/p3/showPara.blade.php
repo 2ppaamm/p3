@@ -28,7 +28,7 @@
                     <xmp></p></xmp>
                 </p>
                 @else
-                    {{ $returndata }}
+                    <p>{{ $returndata }}</p>
                 @endif                          <!--display the paragraphs -->
             @endif
         @endforeach

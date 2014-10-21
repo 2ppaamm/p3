@@ -4,18 +4,6 @@
         <div class="row">
             <div class="col-md-3 col-sm-3">
                 <div class="widget">
-                    <h3>Recent Post</h3>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Lorem ipsum</a></li>
-                        <li><a href="#">Lorem</a></li>
-                        <li><a href="#">Lorem ipsum dolor</a></li>
-                        <li><a href="#">Lorem sit</a></li>
-                        <li><a href="#">Lorem dolor sit</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-3">
-                <div class="widget">
                     <h3>My Websites/Links</h3>
                     <ul class="list-unstyled">
                         <li><a href="school.all-gifted.com">All Gifted School</a></li>
@@ -24,6 +12,11 @@
                         <li><a href="/about">About Me</a></li>
                         <li><a href="/contact">Contact</a></li>
                     </ul>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3">
+                <div class="widget">
+                @yield('page_privacy')
                 </div>
             </div>
             <div class="col-md-6 col-sm-5">

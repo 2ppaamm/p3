@@ -49,7 +49,7 @@ class p3Controller extends BaseController
         } else {
             $genresults =
                 "<img src='/img/404.png' class='col-md-12' /><br />".         //generate an error output page if form is invalid
-                "<h4>Duh... wake me when you've figured your input...</h4>";
+                "<h4>D'oh... wake me when you've figured your input...</h4>";
 
         }
         if (Request::ajax()) {
