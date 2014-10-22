@@ -1,5 +1,11 @@
 <?php
 
+//Homepage
+Route::get('/', function()
+{
+    return View::make('p3.index');
+});
+
 // p3 assignment routes
 
 Route::controller('p3', 'p3Controller');
@@ -14,66 +20,6 @@ Route::get('/p1', function(){
     return View::make('p1.index');
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Homepage
-Route::get('/', function()
-{
-	return View::make('index');
-});
-
-//List all the posts / search
-Route::get('/list/{format?}', function($format = 'html'){
-    if(strtolower($format) =='json') {
-        return 'JSON Version';
-    }
-    elseif(strtolower($format) == 'pdf') {
-        return 'PDF Version';
-    }
-    else {
-        return View::make('posts.index')
-            ->with('name','Susan');
-    }
-});
 
 //Display the form for a new post
 Route::get('/add', function(){

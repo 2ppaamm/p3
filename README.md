@@ -2,7 +2,7 @@ P3 Project 3 - Developer's Best Friend
 ======================================
 Live URL of the project
 =======================
-p3.pamelalim.org
+<a href="http://p3.pamelalim.org">p3.pamelalim.org</a>
 
 Description of the project
 ==========================
@@ -22,7 +22,7 @@ Technical notes
 
 Demo Information
 ================
-Demonstration video: https://www.youtube.com/watch?v=TOnn4RTanVQ
+Demonstration video: <a href="https://www.youtube.com/watch?v=TOnn4RTanVQ">Click here</a>
 
 Plugin/Libraries/Pages/Outside Code Used
 ========================================
