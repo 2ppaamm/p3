@@ -2,7 +2,7 @@ P3 Project 3 - Developer's Best Friend
 ======================================
 Live URL of the project
 =======================
-<a href="http://p3.pamelalim.org">p3.pamelalim.org</a>
+<a href="http://p3.pamelalim.me">p3.pamelalim.me</a>
 
 Description of the project
 ==========================

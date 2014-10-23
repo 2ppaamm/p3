@@ -1,12 +1,11 @@
 @extends('_master')
 
-<!-- define a title for this page -->
 @section('page_title')
      Developer's best friend
 @stop
 
-<!-- start: provide a header for the page -->
 @section('header')
+<!-- start: provide a header for the page -->
     <section id="header" class="heading" style="background: url(/img/homer.jpg);">
         <div class="container">
             <div class="row">
@@ -20,10 +19,9 @@
         </div>
         <div class="overlay"></div>
     </section>
-@stop
 <!-- end: header -->
+@stop
 
-<!-- start: content/app for p3 -->
 @section('content')
 
     <!-- begin:content -->
@@ -63,9 +61,7 @@
                                         {{ Form::text('numpara',1, array(
                                             'id'=>'numpara',
                                             'class'=>'form-control input-lg',
-                                            'min' => '1',
                                             'max' => '99',
-                                            'step'=> '1',
                                             'pattern'=>'[0-9.]+'
                                         ))}}
 								<span class="input-group-addon">
@@ -105,9 +101,7 @@
                                         {{ Form::text('numuser','1', array(
                                             'id' => 'numuser',
                                             'class' => 'form-control input-lg',
-                                            'min' => '1',
                                             'max' => '99',
-                                            'step'=> '1',
                                             'pattern'=>'[0-9.]+'
                                          ))}}
                                         <span class="input-group-addon">
@@ -171,13 +165,12 @@
         </div>
       </div>
     </section>
-    <!-- end:content -->
+<!-- end:content -->
 @stop
 
-<!-- start: Javascript/JQuery that is only applicable to this page -->
 
 @section('page_js')
-<!-- start: handles ajax paragraph search -->
+<!-- start: Javascript/JQuery that is only applicable to this page -->
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
 <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
@@ -228,15 +221,15 @@ $(document).ready(function() {
 
 </script>
 
-@stop
 <!-- end: Page Javascript -->
+@stop
 
-<!-- start: privacy related to page -->
 @section('page_privacy')
+<!-- start: privacy related to page -->
     <div id="simpsons">
         <h3>Simpsons</h3>
         <p>"The Simpsons" TM and (C) (or copyright) Fox and its related companies. All rights reserved. Any reproduction, duplication, or distribution in any form is expressly prohibited.</p>
         <p>This web site, its operators, and any content contained on this site relating to "The Simpsons" are not authorized by Fox.</p>
     </div>
-@stop
 <!-- end: page privacy -->
+@stop
