@@ -22,7 +22,7 @@ Technical notes
 
 Demo Information
 ================
-Demonstration video: <a href="https://www.youtube.com/watch?v=TOnn4RTanVQ">Click here</a>
+Demonstration video: <a href="http://screencast.com/t/W6vt9dhy">Click here</a>
 
 Plugin/Libraries/Pages/Outside Code Used
 ========================================
