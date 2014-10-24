@@ -19,5 +19,3 @@ Route::get('/p2', function() {
 Route::get('/p1', function(){
     return View::make('p1.index');
 });
-
-
