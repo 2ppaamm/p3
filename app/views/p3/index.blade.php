@@ -65,10 +65,9 @@
                                             'pattern'=>'[0-9.]+'
                                         ))}}
 								<span class="input-group-addon">
-                                    {{ Form::button('Generate', array(
+                                    {{ Form::submit('Generate', array(
                                         'class'=>'btn btn-info btn-search',
-                                        'id' => 'genpara',
-                                        'type' => 'submit'
+                                        'id' => 'genpara'
                                     )) }}
 								</span>
 								</div>
@@ -76,7 +75,7 @@
                                    Add paragraph tags
                                 </div>
                                 <div class="col-md-4 input-group">
-                                    {{ Form::checkbox('tags','on',true, array(
+                                    {{ Form::checkbox('tags','off',true, array(
                                        'id'=>'tags'
                                     ))}}
                                 </div>
@@ -116,7 +115,7 @@
                                         Add a birthdate
                                     </div>
                                     <div class="col-md-4 input-group">
-                                        {{ Form::checkbox('birth','on',true, array(
+                                        {{ Form::checkbox('birthdate','on',false, array(
                                             'id'=>'birthy'
                                         ))}}
                                     </div>
@@ -124,7 +123,7 @@
                                         Add a profile
                                     </div>
                                     <div class="col-md-4 input-group">
-                                       {{Form::checkbox('profile','on', true, array(
+                                       {{Form::checkbox('profile','on', false, array(
                                         'id'=>'profilecheck'
                                         )) }}
                                     </div>

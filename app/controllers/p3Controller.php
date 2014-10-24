@@ -30,17 +30,15 @@ class p3Controller extends BaseController
         $genresults=null;
 
         //start: perform a paragraph generator
-
         if (isset($query['numpara']) && $query['numpara'] > $MINREQ && $query['numpara'] < $MAXREQ) {
             $genresults = $faker->paragraphs($query['numpara']);
-
         }
 
         // start: perform a user generator
         elseif (isset($query['numuser']) && $query['numuser'] > $MINREQ && $query['numuser'] < $MAXREQ) {
             for ($i = 0; $i < $query['numuser']; $i++) {
                 $genresults[$i]['username'] = $faker->name;           //create names
-                if (array_key_exists('birth', $query)) {
+                if (array_key_exists('birthdate', $query)) {
                     $genresults[$i]['birthdate'] = $faker->date;       //create birthdates
                 }
                 if (array_key_exists('profile', $query)) {
